@@ -1,4 +1,4 @@
-# Code for state representation learning in standard and distracting MDPs (Section 5.1 & 5.2)
+# Code for State Representation Learning in Standard and Distracting MDPs (Section 5.1 & 5.2)
 
 Code contributor: [Tianwei Ni](https://twni2016.github.io/).
 
@@ -18,11 +18,11 @@ Compared algorithms:
 - ALM-no-model: set `algo=alm-no-model`
 - ALM(0): set `algo=alm-0`
 
-Our minimalist phi_L: set `algo=ours` and
+Our minimalist $\phi_L$: set `algo=ours` and
 - `aux`: select from `fkl, rkl, l2`
 - `aux_optim`: select from `ema, detach, online`
 
-Learning phi_O and phi_Q*: set `algo=ours` and
+Learning $\phi_O$ and $\phi_{Q^*}$: set `algo=ours` and
 - `aux`: select from `op-l2, op-kl, null`
 
 ## Examples
@@ -32,22 +32,22 @@ To reproduce original ALM(3) on Humanoid-v2:
 python train.py id=Humanoid-v2 algo=alm-3
 ```
 
-To reproduce our minimalist phi_L with l2 objective and EMA targets on Ant-v2:
+To reproduce our minimalist $\phi_L$ with l2 objective and EMA targets on Ant-v2:
 ```bash
 python train.py id=Ant-v2 algo=ours aux=l2 aux_optim=ema aux_coef=v-10.0
 ```
 
-To reproduce our minimalist phi_L with reverse KL objective and online targets on Ant-v2:
+To reproduce our minimalist $\phi_L$ with reverse KL objective and online targets on Ant-v2:
 ```bash
 python train.py id=Ant-v2 algo=ours aux=rkl aux_optim=online aux_coef=v-1.0
 ```
 
-To reproduce learning phi_O with forward KL objective on distracted HalfCheetah-v2 with 256 distractors:
+To reproduce learning $\phi_O$ with forward KL objective on distracted HalfCheetah-v2 with 256 distractors:
 ```bash
 python train.py id=HalfCheetah-v2 distraction=256 scale=1.0 algo=ours aux=op-kl aux_optim=null aux_coef=v-1.0
 ```
 
-To reproduce learning phi_Q* on distracted HalfCheetah-v2 with 256 distractors:
+To reproduce learning $\phi_{Q^*}$ on distracted HalfCheetah-v2 with 256 distractors:
 ```bash
 python train.py id=HalfCheetah-v2 distraction=256 scale=1.0 algo=ours aux=null aux_optim=null aux_coef=v-0.0
 ```

@@ -26,9 +26,9 @@ These analyses lead to the development of **our minimalist algorithm** for learn
 
 ## Code Implementation
 
-- `mujoco_code/`: contains the code on standard MDPs (Section 5.1) and distracting MDPs (Section 5.2) using [MuJoCo](https://gymnasium.farama.org/environments/mujoco/) simulators.
-- `minigrid_code/`: contains the code on sparse-reward POMDPs (Section 5.3) using [MiniGrid](https://minigrid.farama.org/index.html) environments.
-- `linear_code/`: contains the code for illustrating our theorem on stop-gradient to prevent collapse (Section 4.2).
+- [`mujoco_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/mujoco_code): contains the code on standard MDPs (Section 5.1) and distracting MDPs (Section 5.2) using [MuJoCo](https://gymnasium.farama.org/environments/mujoco/) simulators.
+- [`minigrid_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/minigrid_code): contains the code on sparse-reward POMDPs (Section 5.3) using [MiniGrid](https://minigrid.farama.org/index.html) environments.
+- [`linear_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/linear_code): contains the code for illustrating our theorem on stop-gradient to prevent collapse (Section 4.2).
 
 ## Our Recommendations for Practitioners
 

@@ -1,4 +1,4 @@
-# Code for history representation learning in sparse-reward POMDPs (Section 5.3)
+# Code for History Representation Learning in Sparse-Reward POMDPs (Section 5.3)
 
 Code contributors: [Erfan Seyedsalehi](https://openreview.net/profile?id=~Erfan_Seyedsalehi2) (main), [Tianwei Ni](https://twni2016.github.io/).
 
