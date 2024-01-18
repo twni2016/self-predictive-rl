@@ -1,7 +1,7 @@
 # Bridging State and History Representations: Understanding Self-Predictive RL
 This is the official code for the paper
 
-["Bridging State and History Representations: Understanding Self-Predictive RL"](https://arxiv.org/abs/?), **ICLR 2024**
+["Bridging State and History Representations: Understanding Self-Predictive RL"](https://arxiv.org/abs/2401.08898), **ICLR 2024**
 
 by [Tianwei Ni](https://twni2016.github.io/), [Benjamin Eysenbach](https://ben-eysenbach.github.io/), [Erfan Seyedsalehi](https://openreview.net/profile?id=~Erfan_Seyedsalehi2), [Michel Ma](https://scholar.google.com/citations?user=capMFX8AAAAJ&hl=en), [Clement Gehring](https://people.csail.mit.edu/gehring/), [Aditya Mahajan](https://cim.mcgill.ca/~adityam/), and [Pierre-Luc Bacon](http://pierrelucbacon.com/). 
 
