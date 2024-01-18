@@ -5,6 +5,38 @@ This is the official code for the paper
 
 by [Tianwei Ni](https://twni2016.github.io/), [Benjamin Eysenbach](https://ben-eysenbach.github.io/), [Erfan Seyedsalehi](https://openreview.net/profile?id=~Erfan_Seyedsalehi2), [Michel Ma](https://scholar.google.com/citations?user=capMFX8AAAAJ&hl=en), [Clement Gehring](https://people.csail.mit.edu/gehring/), [Aditya Mahajan](https://cim.mcgill.ca/~adityam/), and [Pierre-Luc Bacon](http://pierrelucbacon.com/). 
 
+## TLDR: A Minimal Augmentation for Model-Free RL Loss
+
+In this work, we demonstrate a *principled, minimal, and effective* design, as reflected in the following pseudocode:
+
+```python
+def total_loss(hist, act, next_obs, rew):
+    """
+    Compute the total loss for learning one of the three abstractions.
+
+    Args: Batch of transition data (h, a, o', r).
+        hist h: (B, T, O+A), act a: (B, A), next_obs o': (B, O), rew r: (B, 1)
+    """
+    from torch import cat; from copy import deepcopy
+
+    # Encode histories into latent states
+    h_enc = Encoder(hist)  # z: (B, Z)
+    next_hist = cat([hist, cat([act, next_obs], dim=-1)], dim=1)  # h': (B, T+1, O+A)
+    next_h_enc_tar = Encoder_Target(next_hist)  # z': (B, Z)
+
+    # Model-free RL loss in the latent state space (e.g., TD3, R2D2)
+    rl_loss = RL_loss(h_enc, act, next_h_enc_tar, rew)  # (z, a, z', r)
+
+    if [learning Q^*-irrelevance representations]:
+      return rl_loss  # model-free RL
+    elif [learning self-predictive representations]: 
+      zp_loss = ((Latent_Model(h_enc, act) - next_h_enc_tar)**2).sum(-1).mean()  # l2 loss with EMA ZP target
+      return rl_loss + coef * zp_loss
+    elif [learning observation-predictive representations]:
+      op_loss = ((Observ_Model(h_enc, act) - next_obs)**2).sum(-1).mean()  # l2 loss
+      return rl_loss + coef * op_loss
+``` 
+
 ## Background
 
 In deep RL, numerous representation learning methods have been proposed, ranging from *state representations* for MDPs to *history representations* for POMDPs. However, these methods often involve different learning objectives and training techniques, making it challenging for RL practitioners to select the most suitable approach for their specific problems.
@@ -22,13 +54,13 @@ In our paper, we establish how the ZP condition connects the three abstractions.
 These analyses lead to the development of **our minimalist algorithm** for learning self-predictive abstraction. We provide the code as **a baseline** for future research, believing it to be:
 - **Principled in representation learning**: targets each of the three abstractions.
 - **Minimal in algorithmic design**: uses single auxiliary task for representation learning (just one extra loss), and model-free policy optimization (no planning).
-- **Effective in practice**: our implementation of self-predictive representations outperforms $Q^*$-irrelevance abstraction (the model-free baseline), and is more robust to distractions than observation-predictive representations. 
+- **Effective in practice**: our implementation of self-predictive representations outperforms $Q^*$-irrelevance abstraction (the model-free baseline), and is more robust to distractions than observation-predictive representations.
 
 ## Code Implementation
 
-- [`mujoco_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/mujoco_code): contains the code on standard MDPs (Section 5.1) and distracting MDPs (Section 5.2) using [MuJoCo](https://gymnasium.farama.org/environments/mujoco/) simulators.
-- [`minigrid_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/minigrid_code): contains the code on sparse-reward POMDPs (Section 5.3) using [MiniGrid](https://minigrid.farama.org/index.html) environments.
-- [`linear_code/`](https://github.com/twni2016/self-predictive-rl/tree/master/linear_code): contains the code for illustrating our theorem on stop-gradient to prevent collapse (Section 4.2).
+- [`mujoco_code/`](https://github.com/twni2016/self-predictive-rl/tree/main/mujoco_code): contains the code on standard MDPs (Section 5.1) and distracting MDPs (Section 5.2) using [MuJoCo](https://gymnasium.farama.org/environments/mujoco/) simulators.
+- [`minigrid_code/`](https://github.com/twni2016/self-predictive-rl/tree/main/minigrid_code): contains the code on sparse-reward POMDPs (Section 5.3) using [MiniGrid](https://minigrid.farama.org/index.html) environments.
+- [`linear_code/`](https://github.com/twni2016/self-predictive-rl/tree/main/linear_code): contains the code for illustrating our theorem on stop-gradient to prevent collapse (Section 4.2).
 
 ## Our Recommendations for Practitioners
 
