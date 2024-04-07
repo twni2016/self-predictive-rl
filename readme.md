@@ -64,7 +64,7 @@ These analyses lead to the development of **our minimalist algorithm** for learn
 
 ## Our Recommendations for Practitioners 📋 
 
-Here we restate our recommendations from our paper (Section 6):
+Here we restate our preliminary recommendations from our paper (Section 6):
 
 - Analyze your task first. For example, in noisy or distracting tasks, consider using self-predictive representations. In sparse-reward tasks, consider using observation-predictive representations. In deterministic tasks, choose the deterministic $\ell_2$ objectives for representation learning.  
 - Use our minimalist algorithm as your baseline. Our algorithm allows for an independent evaluation of representation learning and policy optimization effects.  Start with end-to-end learning and model-free RL for policy optimization. 

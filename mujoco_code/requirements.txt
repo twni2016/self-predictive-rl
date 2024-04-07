@@ -29,6 +29,7 @@ pyglet==1.5.0
 pyparsing==3.0.9
 PyYAML==6.0
 requests==2.28.1
+rliable==1.0.8
 scikit-learn
 scipy
 sentry-sdk
