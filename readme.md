@@ -74,4 +74,13 @@ Here we restate our recommendations from our paper (Section 6):
 
 If you have any questions, please raise an issue (preferred) or send an email to Tianwei (tianwei.ni@mila.quebec).
 
+## Citation
 
+```bibtex
+@inproceedings{ni2024bridging,
+  title={Bridging State and History Representations: Understanding Self-Predictive RL},
+  author={Ni, Tianwei and Eysenbach, Benjamin and Seyedsalehi, Erfan and Ma, Michel and Gehring, Clement and Mahajan, Aditya and Bacon, Pierre-Luc},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2024}
+}
+```

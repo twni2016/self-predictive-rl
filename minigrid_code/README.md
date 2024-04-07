@@ -45,8 +45,26 @@ python main.py --num_steps 4000000 --env_name MiniGrid-SimpleCrossingS9N1-v0  \
 --aux AIS --aux_coef 1.0
 ```
 
-## Plotting and Logged Results
-TODO
+## Logged Results and Plotting
+
+The log files used in our paper is provided at [Google Drive](https://drive.google.com/file/d/1abVEBh7hrk9kdPjzsENR30Tih80iU5Qb/view?usp=sharing) (~125MB). You can download and unzip it to this folder and name it as `logs`.
+
+We use the `vis.ipynb` for generating plots in our paper. Below are the commands to generate specific figures in the paper:
+- Figure 14: individual-task episode return curves; Figure 6a: aggregated episode return curves. In Part 1 (for Figure 14) or Part 2 (for Figure 6a), choose
+```python
+metric, y_label, sci_axis = "return", "episode return", "x"
+tag = ""
+hue = "aux"
+style = "modular"
+```
+- Figure 15: individual-task matrix rank curves; Figure 6b: aggregated matrix rank curves. In Part 1 (for Figure 15) or Part 2 (for Figure 6b), choose
+```python
+metric, y_label, sci_axis = "rank-3", "matrix rank", "x"
+tag = "ZP" 
+hue = "aux_optim"
+style = None
+```
+Do not change the other variables and run the whole part to generate all the plots. Please be patient: it takes 1min to generate one individual-task plot and takes <20min to generate one aggregated plot.
 
 ## Flags
 
