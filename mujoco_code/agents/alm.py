@@ -37,6 +37,7 @@ class AlmAgent(object):
         self.bisim_gamma = cfg.bisim_gamma
         self.bisim_critic_train_steps = cfg.bisim_critic_train_steps
         self.bisim_z_dist_scalarize = cfg.bisim_z_dist_scalarize
+        self.bisim_deterministic = cfg.bisim_deterministic
 
         # aux
         self.aux = cfg.aux
@@ -95,10 +96,17 @@ class AlmAgent(object):
         hidden_dims: int,
         model_hidden_dims: int,
     ) -> None:
-        if self.aux in [None, "l2", "op-l2", "bisim_critic"]:
-            EncoderClass, ModelClass = DetEncoder, DetModel
-        else:  # fkl, rkl, op-kl
-            EncoderClass, ModelClass = StoEncoder, StoModel
+
+        if "bisim" in self.aux:
+            if self.bisim_deterministic:
+                EncoderClass, ModelClass = DetEncoder, DetModel
+            else:
+                EncoderClass, ModelClass = StoEncoder, StoModel
+        else:
+            if self.aux in [None, "l2", "op-l2"]:
+                EncoderClass, ModelClass = DetEncoder, DetModel
+            else:  # fkl, rkl, op-kl
+                EncoderClass, ModelClass = StoEncoder, StoModel
 
         self.encoder = EncoderClass(num_states, hidden_dims, latent_dims).to(
             self.device

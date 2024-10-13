@@ -32,6 +32,7 @@ online_encoder_actorcritic: true
 bisim_gamma: 0.1
 bisim_critic_train_steps: 15
 bisim_z_dist_scalarize: true
+bisim_deterministic: true
 
 #learning 
 gamma: 0.99
