@@ -47,7 +47,7 @@ python main.py --num_steps 4000000 --env_name MiniGrid-SimpleCrossingS9N1-v0  \
 
 ## Logged Results and Plotting
 
-The log files used in our paper is provided at [Google Drive](https://drive.google.com/file/d/1abVEBh7hrk9kdPjzsENR30Tih80iU5Qb/view?usp=sharing) (~125MB). You can download and unzip it to this folder and name it as `logs`.
+The log files used in our paper is provided at [Google Drive](https://drive.google.com/file/d/1eefypbXFIZukSHsWUczYf4zTbg4j0T6h/view?usp=sharing) (~125MB). You can download and unzip it to this folder and name it as `logs`.
 
 We use the [`vis.ipynb`](https://github.com/twni2016/self-predictive-rl/blob/main/minigrid_code/vis.ipynb) for generating plots in our paper. Below are the commands to generate specific figures in the paper:
 - Figure 14: individual-task episode return curves; Figure 6a: aggregated episode return curves. In Part 1 (for Figure 14) or Part 2 (for Figure 6a), choose
