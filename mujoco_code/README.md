@@ -56,7 +56,7 @@ You will see the logging and executed config files in `logs/` folder.
 
 ## Logged Results and Plotting
 
-The log files used in our paper is provided at [Google Drive](https://drive.google.com/file/d/1KaxHySEX3xNCfqUyMsPM2sLzo96SQZd5/view?usp=sharing) (~2.8GB; maybe redundant with some unpublished results). You can download and unzip it to this folder and name it as `logs`.
+The log files used in our paper is provided at [Google Drive](https://drive.google.com/file/d/1snXpgiVAutFtCg_50f5p9itn8dYRQplE/view?usp=sharing) (~2.8GB; maybe redundant with some unpublished results). You can download and unzip it to this folder and name it as `logs`.
 
 We use the [`vis.ipynb`](https://github.com/twni2016/self-predictive-rl/blob/main/mujoco_code/vis.ipynb) for generating plots in our paper. 
 Below are the commands to generate specific figures in the paper. 
